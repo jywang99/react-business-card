@@ -1,0 +1,12 @@
+nav {
+    border-bottom: 1px solid black;
+}
+
+li {
+    list-style-type: none;
+    display: inline-block;
+}
+
+.nav-item {
+    margin-left: 30px;
+}
