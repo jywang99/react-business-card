@@ -11,6 +11,7 @@ const UserList = ({ list }) => {
                     <th scope="col">Birthday</th>
                     <th scope="col">Job title</th>
                     <th scope="col">Employer</th>
+                    <th scope="col">City</th>
                     <th scope="col">Email</th>
                     <th scope="col">Phone</th>
                 </tr>

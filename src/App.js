@@ -1,7 +1,7 @@
 import './App.css';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useSearchParams } from "react-router-dom";
 import Home from './pages/home';
-import Edit from './pages/edit';
+import Edit from './pages/edit/edit';
 import Admin from './pages/admin/admin';
 
 function App() {

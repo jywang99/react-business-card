@@ -7,6 +7,7 @@ const User = ({ user }) => {
             <td>{user.bday}</td>
             <td>{user.jobTitle}</td>
             <td>{user.employer}</td>
+            <td>{user.city}</td>
             <td>{user.email}</td>
             <td>{user.phone}</td>
         </tr>

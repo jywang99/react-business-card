@@ -1,14 +1,15 @@
 import { useState } from 'react';
 
-const EditProfile = () => {
-    const [fname, setFname] = useState('');
-    const [lname, setLname] = useState('');
-    const [age, setAge] = useState(20);
-    const [bday, setBday] = useState('');
-    const [jobTitle, setJobTitle] = useState('');
-    const [employer, setEmployer] = useState('');
-    const [email, setEmail] = useState('');
-    const [phone, setPhone] = useState('');
+const EditProfile = ({ user }) => {
+    const [fname, setFname] = useState(user.fname);
+    const [lname, setLname] = useState(user.lname);
+    const [age, setAge] = useState(user.age);
+    const [bday, setBday] = useState(user.bday);
+    const [jobTitle, setJobTitle] = useState(user.jobTitle);
+    const [employer, setEmployer] = useState(user.employer);
+    const [city, setCity] = useState(user.city);
+    const [email, setEmail] = useState(user.email);
+    const [phone, setPhone] = useState(user.phone);
 
     const handleSubmit = (event) => {
         const requestOptions = {
@@ -23,6 +24,7 @@ const EditProfile = () => {
                     bday: bday,
                     jobTitle: jobTitle,
                     employer: employer,
+                    city: city,
                     email: email,
                     phone: phone
                 }
@@ -61,6 +63,10 @@ const EditProfile = () => {
                 <label htmlFor="employer">Employer: </label>
                 <input type="text" id="employer" name="employer" value={employer}
                     onChange={(e) => setEmployer(e.target.value)} required />
+                <br />
+                <label htmlFor="city">City: </label>
+                <input type="text" id="city" name="city" value={city}
+                    onChange={(e) => setCity(e.target.value)} required />
                 <br />
                 <label htmlFor="email">Email: </label>
                 <input type="text" id="email" name="email" value={email}

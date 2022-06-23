@@ -1,4 +1,4 @@
-const Profile = ({user}) => {
+const Profile = ({ user }) => {
     return (
         <div>
             <p>First name: {user.fname}</p>
