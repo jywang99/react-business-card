@@ -7,6 +7,7 @@ const Profile = ({ user }) => {
             <p>Birthday: {user.bday}</p>
             <p>Job title: {user.jobTitle}</p>
             <p>Employer: {user.employer}</p>
+            <p>City: {user.city}</p>
             <p>Email: {user.email}</p>
             <p>Phone number: {user.phone}</p>
         </div>

@@ -15,9 +15,14 @@ const Header = ({ title }) => {
 
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <ul className="my-2 my-lg-0">
+            <ul>
                 <a className="navbar-brand" href="/">Business Card</a>
                 <li className="nav-item"><strong>{title}</strong></li>
+                {
+                    adminLoggedin ?
+                        <li className="nav-item"><a href="/admin">Admin page</a></li> :
+                        <li></li>
+                }
                 <li className="nav-item">
                     <LoginStatBtn loggedin={loggedin} setLoggedin={setLoggedin} />
                 </li>

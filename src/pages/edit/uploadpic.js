@@ -18,11 +18,12 @@ const UploadPic = ({ currentURL }) => {
     return (
         <div>
             <h3>Profile picture</h3>
+            <p></p>
             <img className="img-thumbnail" src={fileURL} alt="current profile" />
             <form onSubmit={handleSubmit}>
                 <input type="file" accept="image/*" onChange={e => setSelectedFile(e.target.files[0])}></input>
                 <p className="text-danger">{msg}</p>
-                <button type="Submit">Submit</button>
+                <button type="Submit" className="btn btn-primary">Submit</button>
             </form>
         </div>
     );

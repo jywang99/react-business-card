@@ -1,6 +1,10 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import properties from '../../properties';
+import { getUserToken } from '../../util/credentialmanager';
 
 const EditProfile = ({ user }) => {
+    const navigate = useNavigate();
     const [fname, setFname] = useState(user.fname);
     const [lname, setLname] = useState(user.lname);
     const [age, setAge] = useState(user.age);
@@ -14,31 +18,31 @@ const EditProfile = ({ user }) => {
     const handleSubmit = (event) => {
         const requestOptions = {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+                'Authorization': getUserToken()
+            },
             body: JSON.stringify({
-                id: localStorage.getItem("userid"),
-                properties: {
-                    fname: fname,
-                    lname: lname,
-                    age: age,
-                    bday: bday,
-                    jobTitle: jobTitle,
-                    employer: employer,
-                    city: city,
-                    email: email,
-                    phone: phone
-                }
+                fname: fname,
+                lname: lname,
+                age: age,
+                bday: bday,
+                jobTitle: jobTitle,
+                employer: employer,
+                city: city,
+                email: email,
+                phone: phone
             })
         };
-        console.log("POST: ", requestOptions);
-        fetch('https://28e6xerox8.execute-api.us-east-1.amazonaws.com/test/users', requestOptions)
-            .then(response => console.log(response));
+        fetch(properties.userApiUrl, requestOptions)
+            .then(response => console.log(response))
+            .then(navigate("/"));
         event.preventDefault();
     }
 
     return (
         <div>
             <h3>Edit your profile</h3>
+            <p></p>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="fname">First name: </label>
                 <input type="text" id="fname" name="fname" value={fname}
@@ -76,7 +80,10 @@ const EditProfile = ({ user }) => {
                 <input type="tel" id="phone" name="phone" value={phone}
                     onChange={(e) => setPhone(e.target.value)} required />
                 <br />
-                <input type="submit" value="Submit" />
+                <p></p>
+                <input type="submit" className="btn btn-primary" value="Submit" />
+                <input type="button" className="btn btn-danger" value="Delete" />
+                <input type="submit" className="btn btn-secondary" value="Cancel" />
             </form>
         </div>
     );

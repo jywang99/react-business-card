@@ -48,11 +48,16 @@ const getAdminToken = () => {
 const logout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("token-expires");
+    localStorage.removeItem("id");
 }
 
 const logoutAdmin = () => {
     localStorage.removeItem("admin-token");
     localStorage.removeItem("admin-token-expires");
+    localStorage.removeItem("admin-id");
 }
 
-export { isLoggedin, isAdminLoggedin, saveUserCred, saveAdminCred, getUserToken, getAdminToken, logout, logoutAdmin };
+export {
+    isLoggedin, isAdminLoggedin, saveUserCred, saveAdminCred, getUserToken, getAdminToken,
+    logout, logoutAdmin
+};

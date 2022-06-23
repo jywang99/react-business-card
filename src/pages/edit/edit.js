@@ -3,14 +3,27 @@ import Header from '../../components/header';
 import UploadPic from './uploadpic';
 import { useState, useEffect } from 'react';
 import properties from '../../properties';
+import { getUserToken } from '../../util/credentialmanager';
 
 const Edit = () => {
     const [user, setUser] = useState(null);
 
-    useEffect(() => {
-        fetch(properties.userApiUrl)
+    const getUserInfo = () => {
+        fetch(properties.userApiUrl, {
+            method: 'GET',
+            headers: {
+                'Authorization': getUserToken()
+            }
+        })
             .then(response => response.json())
-            .then(data => setUser(data));
+            .then(data => setUser(data))
+            .catch(error => {
+                console.log(error);
+            });
+    }
+
+    useEffect(() => {
+        getUserInfo();
     }, []);
 
     return (

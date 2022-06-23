@@ -1,9 +1,20 @@
-const AdminLoginStatBtn = () => {
-    let loggedin = false;
-    let message = loggedin ? "Logout" : "Login";
+const AdminLoginStatBtn = ({ loggedin, setLoggedin }) => {
+    const handleLogin = () => {
+
+    }
+
+    const handleLogout = () => {
+
+    }
 
     return (
-        <button type="button">{"Admin " + message}</button>
+        <div>
+            {
+                loggedin ?
+                    <button type="button" className="btn btn-danger" onClick={() => handleLogout()}>Admin Logout</button> :
+                    <button type="button" className="btn btn-warning" onClick={() => handleLogin()}>Admin Login</button>
+            }
+        </div>
     );
 }
 

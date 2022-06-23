@@ -20,8 +20,8 @@ const LoginStatBtn = ({ loggedin, setLoggedin }) => {
         <div>
             {
                 loggedin ?
-                    <button type="button" onClick={() => handleLogout()}>Logout</button> :
-                    <button type="button" onClick={() => handleLogin()}>Login</button>
+                    <button type="button" className="btn btn-danger" onClick={() => handleLogout()}>Logout</button> :
+                    <button type="button" className="btn btn-primary" onClick={() => handleLogin()}>Login</button>
             }
 
         </div>
