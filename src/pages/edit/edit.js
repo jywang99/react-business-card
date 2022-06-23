@@ -30,6 +30,8 @@ const Edit = () => {
         <div>
             <Header title="Edit" />
             <div className="content">
+                <a href="/">←Back</a>
+                <p></p>
                 <UploadPic />
                 <hr />
                 {user ? <EditProfile user={user} /> : <p>Loading...</p>}

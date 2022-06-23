@@ -24,6 +24,7 @@ const UploadPic = ({ currentURL }) => {
                 <input type="file" accept="image/*" onChange={e => setSelectedFile(e.target.files[0])}></input>
                 <p className="text-danger">{msg}</p>
                 <button type="Submit" className="btn btn-primary">Submit</button>
+                <button type="Submit" className="btn btn-danger">Delete</button>
             </form>
         </div>
     );

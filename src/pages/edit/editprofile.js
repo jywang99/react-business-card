@@ -39,6 +39,19 @@ const EditProfile = ({ user }) => {
         event.preventDefault();
     }
 
+    const handleDelete = (event) => {
+        const requestOptions = {
+            method: 'DELETE',
+            headers: {
+                'Authorization': getUserToken()
+            }
+        }
+        fetch(properties.userApiUrl, requestOptions)
+            .then(response => console.log(response))
+            .then(navigate("/"));
+        event.preventDefault();
+    }
+
     return (
         <div>
             <h3>Edit your profile</h3>
@@ -82,8 +95,7 @@ const EditProfile = ({ user }) => {
                 <br />
                 <p></p>
                 <input type="submit" className="btn btn-primary" value="Submit" />
-                <input type="button" className="btn btn-danger" value="Delete" />
-                <input type="submit" className="btn btn-secondary" value="Cancel" />
+                <input type="button" className="btn btn-danger" onClick={e => handleDelete(e)} value="Delete" />
             </form>
         </div>
     );
