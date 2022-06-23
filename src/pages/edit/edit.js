@@ -2,12 +2,13 @@ import EditProfile from './editprofile';
 import Header from '../../components/header';
 import UploadPic from './uploadpic';
 import { useState, useEffect } from 'react';
+import properties from '../../properties';
 
 const Edit = () => {
     const [user, setUser] = useState(null);
 
     useEffect(() => {
-        fetch('https://28e6xerox8.execute-api.us-east-1.amazonaws.com/test/users')
+        fetch(properties.userApiUrl)
             .then(response => response.json())
             .then(data => setUser(data));
     }, []);

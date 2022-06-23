@@ -3,6 +3,7 @@ import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import Profile from './profile';
 import React, { useEffect, useState } from 'react';
 import { saveUserCred, saveAdminCred } from '../util/credentialmanager';
+import properties from '../properties';
 
 
 const Home = () => {
@@ -22,7 +23,7 @@ const Home = () => {
             }
         }
 
-        fetch('https://28e6xerox8.execute-api.us-east-1.amazonaws.com/test/users')
+        fetch(properties.userApiUrl)
             .then(response => response.json())
             .then(data => setUser(data));
     }, []);
