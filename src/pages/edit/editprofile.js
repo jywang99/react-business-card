@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import properties from '../../properties';
-import { getUserToken } from '../../util/credentialmanager';
+import { getAdminToken, getUserToken, logout, logoutAdmin } from '../../util/credentialmanager';
 
-const EditProfile = ({ user }) => {
+const EditProfile = ({ user, mode }) => {
     const navigate = useNavigate();
+
     const [fname, setFname] = useState(user.fname);
     const [lname, setLname] = useState(user.lname);
     const [age, setAge] = useState(user.age);
@@ -16,6 +17,15 @@ const EditProfile = ({ user }) => {
     const [phone, setPhone] = useState(user.phone);
 
     const handleSubmit = (event) => {
+        if (mode === "user") {
+            handleUserSubmit();
+        } else {
+            handleAdminSubmit();
+        }
+        event.preventDefault();
+    }
+
+    const handleUserSubmit = () => {
         const requestOptions = {
             method: 'POST',
             headers: {
@@ -36,10 +46,43 @@ const EditProfile = ({ user }) => {
         fetch(properties.userApiUrl, requestOptions)
             .then(response => console.log(response))
             .then(navigate("/"));
-        event.preventDefault();
+    }
+
+    const handleAdminSubmit = () => {
+        const requestOptions = {
+            method: 'POST',
+            headers: {
+                'Authorization': getAdminToken(),
+            },
+            body: JSON.stringify({
+                Id: user.Id,
+                fname: fname,
+                lname: lname,
+                age: age,
+                bday: bday,
+                jobTitle: jobTitle,
+                employer: employer,
+                city: city,
+                email: email,
+                phone: phone
+            })
+        };
+        console.log(requestOptions);
+        fetch(properties.adminApiUrl, requestOptions)
+            .then(response => console.log(response))
+            .then(navigate("/admin"));
     }
 
     const handleDelete = (event) => {
+        if (mode === "user") {
+            handleUserDelete();
+        } else {
+            handleAdminDelete();
+        }
+        event.preventDefault();
+    }
+
+    const handleUserDelete = () => {
         const requestOptions = {
             method: 'DELETE',
             headers: {
@@ -49,12 +92,26 @@ const EditProfile = ({ user }) => {
         fetch(properties.userApiUrl, requestOptions)
             .then(response => console.log(response))
             .then(navigate("/"));
-        event.preventDefault();
+    }
+
+    const handleAdminDelete = () => {
+        const requestOptions = {
+            method: 'DELETE',
+            headers: {
+                'Authorization': getAdminToken()
+            },
+            body: JSON.stringify({
+                Id: user.Id
+            })
+        }
+        fetch(properties.adminApiUrl, requestOptions)
+            .then(response => console.log(response))
+            .then(navigate("/admin"));
     }
 
     return (
         <div>
-            <h3>Edit your profile</h3>
+            <h3>Edit profile</h3>
             <p></p>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="fname">First name: </label>

@@ -34,7 +34,7 @@ const Edit = () => {
                 <p></p>
                 <UploadPic />
                 <hr />
-                {user ? <EditProfile user={user} /> : <p>Loading...</p>}
+                {user ? <EditProfile user={user} mode="user" /> : <p>Loading...</p>}
             </div>
         </div>
     );

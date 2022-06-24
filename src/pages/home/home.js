@@ -1,9 +1,9 @@
-import Header from '../components/header';
+import Header from '../../components/header';
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import Profile from './profile';
 import React, { useEffect, useState } from 'react';
-import { saveUserCred, saveAdminCred, getUserToken, isLoggedin, isAdminLoggedin } from '../util/credentialmanager';
-import properties from '../properties';
+import { saveUserCred, saveAdminCred, getUserToken, isLoggedin, isAdminLoggedin } from '../../util/credentialmanager';
+import properties from '../../properties';
 
 
 const Home = () => {
@@ -12,6 +12,7 @@ const Home = () => {
     // user info
     const [user, setUser] = useState(null);
     const [disabled, setDisabled] = useState(false);
+    const [message, setMessage] = useState("Loading...");
 
     // URL params
     const [params] = useSearchParams();
@@ -40,7 +41,7 @@ const Home = () => {
             .then(response => response.json())
             .then(data => setUser(data))
             .catch(error => {
-                console.log(error);
+                setMessage("User information not found.");
             });
     }
 
@@ -66,7 +67,7 @@ const Home = () => {
                         <Profile user={user} />
                         <button type="button" className="btn btn-warning" onClick={() => navigate('/edit')}>Edit</button>
                     </div> :
-                    <p>Loading...</p>
+                    <p>{message}</p>
                 }
             </div>
         );

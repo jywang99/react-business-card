@@ -5,6 +5,7 @@ const UserList = ({ list }) => {
         <table className="table">
             <thead>
                 <tr>
+                    <th scope="col">User ID</th>
                     <th scope="col">First name</th>
                     <th scope="col">Last name</th>
                     <th scope="col">Age</th>
@@ -14,6 +15,7 @@ const UserList = ({ list }) => {
                     <th scope="col">City</th>
                     <th scope="col">Email</th>
                     <th scope="col">Phone</th>
+                    <th scope="col">Actions</th>
                 </tr>
                 {list.map((user, i) => <User key={i} user={user} />)}
             </thead>
