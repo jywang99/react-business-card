@@ -44,7 +44,6 @@ const EditProfile = ({ user, mode }) => {
             })
         };
         fetch(properties.userApiUrl, requestOptions)
-            .then(response => console.log(response))
             .then(navigate("/"));
     }
 
@@ -67,9 +66,7 @@ const EditProfile = ({ user, mode }) => {
                 phone: phone
             })
         };
-        console.log(requestOptions);
         fetch(properties.adminApiUrl, requestOptions)
-            .then(response => console.log(response))
             .then(navigate("/admin"));
     }
 
@@ -90,7 +87,6 @@ const EditProfile = ({ user, mode }) => {
             }
         }
         fetch(properties.userApiUrl, requestOptions)
-            .then(response => console.log(response))
             .then(navigate("/"));
     }
 
@@ -105,7 +101,6 @@ const EditProfile = ({ user, mode }) => {
             })
         }
         fetch(properties.adminApiUrl, requestOptions)
-            .then(response => console.log(response))
             .then(navigate("/admin"));
     }
 

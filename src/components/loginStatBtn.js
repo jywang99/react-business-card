@@ -1,11 +1,7 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import properties from "../properties";
 import { logout } from "../util/credentialmanager";
 
 const LoginStatBtn = ({ loggedin, setLoggedin }) => {
-    const navigate = useNavigate();
-
     const handleLogin = () => {
         window.location.assign(properties.userLoginUrl);
     }
@@ -13,8 +9,7 @@ const LoginStatBtn = ({ loggedin, setLoggedin }) => {
     const handleLogout = () => {
         logout();
         setLoggedin(false);
-        navigate('/');
-        window.location.reload(false);
+        window.location.assign(properties.userLogoutUrl);
     }
 
     return (
