@@ -4,6 +4,7 @@ import Profile from './profile';
 import React, { useEffect, useState } from 'react';
 import { saveUserCred, saveAdminCred, getUserToken, isLoggedin, isAdminLoggedin } from '../../util/credentialmanager';
 import properties from '../../properties';
+import UserPic from '../../components/userPic';
 
 
 const Home = () => {
@@ -64,7 +65,7 @@ const Home = () => {
             <div>
                 {user ?
                     <div>
-                        <img id="profpic" className="img-thumbnail" src={properties.userImageUrlBase + user['Id'] + ".png"} alt="current profile" />
+                        <UserPic userid={user['Id']} />
                         <p></p>
                         <Profile user={user} />
                         <button type="button" className="btn btn-warning" onClick={() => navigate('/edit')}>Edit</button>
