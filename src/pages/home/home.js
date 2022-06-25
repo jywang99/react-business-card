@@ -41,6 +41,7 @@ const Home = () => {
         })
             .then(response => response.json())
             .then(data => setUser(data))
+            .then(renderProfile())
             .catch(error => {
                 setMessage("User information not found.");
             });
