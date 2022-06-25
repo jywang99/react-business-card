@@ -32,7 +32,7 @@ const Edit = () => {
             <div className="content">
                 <a href="/">←Back</a>
                 <p></p>
-                <UploadPic />
+                {user ? <UploadPic userid={user['Id']} /> : <p>Loading...</p>}
                 <hr />
                 {user ? <EditProfile user={user} mode="user" /> : <p>Loading...</p>}
             </div>

@@ -64,6 +64,8 @@ const Home = () => {
             <div>
                 {user ?
                     <div>
+                        <img id="profpic" className="img-thumbnail" src={properties.userImageUrlBase + user['Id'] + ".png"} alt="current profile" />
+                        <p></p>
                         <Profile user={user} />
                         <button type="button" className="btn btn-warning" onClick={() => navigate('/edit')}>Edit</button>
                     </div> :
