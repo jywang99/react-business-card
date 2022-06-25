@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import UserPic from "../../components/userPic";
 import properties from "../../properties";
 import { getUserToken } from "../../util/credentialmanager";
 
@@ -33,7 +34,7 @@ const UploadPic = ({ userid }) => {
         if (fileUrl) {
             return <img id="profpic" className="img-thumbnail" src={fileUrl} alt="current profile" />;
         } else {
-            return <img id="profpic" className="img-thumbnail" src={properties.userImageUrlBase + userid + ".png"} alt="current profile" />;
+            return <UserPic userid={userid} />
         }
     }
 
@@ -52,12 +53,21 @@ const UploadPic = ({ userid }) => {
             },
             body: JSON.stringify(queryImage)
         }
-        fetch(properties.userImageApiUrl, requestObj).
-            then(navigate("/"));
+        fetch(properties.userImageApiUrl, requestObj)
+            .then(response => response.json())
+            .then(navigate("/"));
     }
 
     const handleDelete = (event) => {
         event.preventDefault();
+        fetch(properties.userImageApiUrl, {
+            method: "DELETE",
+            headers: {
+                'Authorization': getUserToken()
+            }
+        })
+            .then(response => response.json())
+            .then(navigate("/"));
     }
 
     return (
