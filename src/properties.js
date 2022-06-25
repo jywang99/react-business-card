@@ -1,5 +1,5 @@
 const stage = "test";
-const callbackUrl = "http://businesscard-react-app.s3-website-us-east-1.amazonaws.com/";
+const callbackUrl = "https://d3322l2ivpxcns.cloudfront.net/";
 
 const properties = {
     userLoginUrl: 'https://businesscard.auth.us-east-1.amazoncognito.com/login?client_id=6bh4tfl5a0mllrq98frjl7ilp9&response_type=token&scope=email+openid+phone&redirect_uri=' + callbackUrl + '%3Fmode%3Duser',
